@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import animations from '@midudev/tailwind-animations'
+
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
@@ -9,6 +12,7 @@ module.exports = {
   },
   plugins: [
     require('preline/plugin'),
+    animations
   ],
 }
 
