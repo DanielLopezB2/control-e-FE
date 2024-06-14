@@ -20,6 +20,7 @@
     "@angular/router": "^17.3.0",
     "@midudev/tailwind-animations": "^0.0.7",
     "@preline/combobox": "^2.3.0",
+    "@preline/overlay": "^2.3.0",
     "@preline/select": "^2.3.0",
     "@preline/tooltip": "^2.3.0",
     "apexcharts": "^3.49.1",

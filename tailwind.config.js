@@ -5,7 +5,7 @@ import animations from '@midudev/tailwind-animations'
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
-    './node_modules/preline/preline.js'
+    'node_modules/preline/preline.js'
   ],
   theme: {
     extend: {},

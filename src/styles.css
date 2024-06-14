@@ -4,6 +4,7 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
 }
 
 /* lato-latin-100-normal */
