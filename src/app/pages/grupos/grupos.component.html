@@ -161,195 +161,179 @@
 
 <!-- FORM DE EDITAR -->
 
-@if (editarGrupoFormIsVisible) {
 
-    <div id="editar-form" class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto animate-fade-in-down animate-duration-slow">
+<div id="editar-form" class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto animate-fade-in-down animate-duration-slow" [hidden]="!editarGrupoFormIsVisible">
 
-        <div class="bg-white rounded-xl shadow shadow-indigo-500 p-4 sm:p-7">
-    
-            <div class="mb-8 flex justify-between items-center">
-                <h2 class="text-xl font-bold text-gray-800">
-                    Editar información del grupo
-                </h2>
-                
-                <button type="button" class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" (click)="cerrarEditar()">
-    
-                    <span class="sr-only">Close</span>
-    
-                    <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-    
-                </button>
-            </div>
+    <div class="bg-white rounded-xl shadow shadow-indigo-500 p-4 sm:p-7">
+
+        <div class="mb-8 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-gray-800">
+                Editar información del grupo
+            </h2>
             
-      
-            <form>
+            <button type="button" class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" (click)="cerrarEditar()">
+
+                <span class="sr-only">Close</span>
+
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+
+            </button>
+        </div>
+        
     
-                <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
-      
-                    <!-- NOMBRE GRUPO -->
+        <form>
+
+            <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
     
-                    <div class="sm:col-span-3">
+                <!-- NOMBRE GRUPO -->
+
+                <div class="sm:col-span-3">
+
+                    <label for="af-account-full-name" class="inline-block text-sm text-gray-800 mt-2.5">
+                        Nombre grupo
+                    </label>
+
+                    <div class="hs-tooltip inline-block">
+                        <button type="button" class="hs-tooltip-toggle ms-1">
+                            <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                        </button>
+                        <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible w-40 text-center z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
+                            Se muestra en tablas de asistencias e información general
+                        </span>
+                    </div>
+
+                </div>
     
-                        <label for="af-account-full-name" class="inline-block text-sm text-gray-800 mt-2.5">
-                            Nombre grupo
-                        </label>
-    
-                        <div class="hs-tooltip inline-block">
-                            <button type="button" class="hs-tooltip-toggle ms-1">
-                                <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                <div class="sm:col-span-9">
+
+                    <div class="sm:flex">
+
+                        <input id="af-account-full-name" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="6B">
+
+                    </div>
+
+                </div>
+
+                <!-- DOCENTE ENCARGADO -->
+
+                <div class="sm:col-span-3">
+                    <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5">
+                    Docente encargado
+                    </label>
+                    
+                </div>
+
+                <div class="sm:col-span-9">
+
+                    <div class="w-full inline-flex relative" data-hs-combo-box="">
+
+                        <div class="relative w-full">
+                            <input class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" type="text" value="Juanito Perez" data-hs-combo-box-input="">
+                            <div class="absolute top-1/2 end-3 -translate-y-1/2" data-hs-combo-box-toggle="">
+                                <svg class="flex-shrink-0 size-3.5 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m7 15 5 5 5-5"></path>
+                                <path d="m7 9 5-5 5 5"></path>
                                 </svg>
-                            </button>
-                            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible w-40 text-center z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
-                                Se muestra en tablas de asistencias e información general
-                            </span>
-                        </div>
-    
-                    </div>
-      
-                    <div class="sm:col-span-9">
-    
-                        <div class="sm:flex">
-    
-                            <input id="af-account-full-name" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="6B">
-    
-                        </div>
-    
-                    </div>
-    
-                    <!-- DOCENTE ENCARGADO -->
-    
-                    <div class="sm:col-span-3">
-                        <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5">
-                        Docente encargado
-                        </label>
-                        
-                    </div>
-
-                    <div class="sm:col-span-9">
-
-                        <div class="relative w-full" data-hs-combo-box="">
-                            <div class="relative">
-                              <input class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" type="text" value="Pedrito" data-hs-combo-box-input="">
-                                <div class="absolute top-1/2 end-3 -translate-y-1/2" data-hs-combo-box-toggle="">
-                                    <svg class="flex-shrink-0 size-3.5 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="m7 15 5 5 5-5"></path>
-                                    <path d="m7 9 5-5 5 5"></path>
-                                    </svg>
-                                </div>
                             </div>
+                        </div>
 
-                            <div class="absolute z-50 w-full max-h-72 p-1 bg-white border border-gray-200 rounded-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700" style="display: none;" data-hs-combo-box-output="">
-                                <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800" tabindex="0" data-hs-combo-box-output-item="">
-                                    <div class="flex justify-between items-center w-full">
-                                    <span data-hs-combo-box-search-text="Argentina" data-hs-combo-box-value="">Argentina</span>
+                        <div class="absolute z-50 w-full max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg overflow-hidden overflow-y-auto" style="display: none;" data-hs-combo-box-output="">
+
+                            <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100" tabindex="0" data-hs-combo-box-output-item="">
+                                <div class="flex justify-between items-center w-full">
+                                    <span data-hs-combo-box-search-text="Juanito Perez" data-hs-combo-box-value="">Juanito Perez</span>
                                     <span class="hidden hs-combo-box-selected:block">
-                                        <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6 9 17l-5-5"></path>
+                                        <svg class="flex-shrink-0 size-3.5 text-indigo-600 dark:text-indigo-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
                                         </svg>
                                     </span>
-                                    </div>
-                              </div>
-                              <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800" tabindex="1" data-hs-combo-box-output-item="">
-                                <div class="flex justify-between items-center w-full">
-                                  <span data-hs-combo-box-search-text="Brazil" data-hs-combo-box-value="">Brazil</span>
-                                  <span class="hidden hs-combo-box-selected:block">
-                                    <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                      <path d="M20 6 9 17l-5-5"></path>
-                                    </svg>
-                                  </span>
                                 </div>
-                              </div>
-                              <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800" tabindex="2" data-hs-combo-box-output-item="">
-                                <div class="flex justify-between items-center w-full">
-                                  <span data-hs-combo-box-search-text="China" data-hs-combo-box-value="">China</span>
-                                  <span class="hidden hs-combo-box-selected:block">
-                                    <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                      <path d="M20 6 9 17l-5-5"></path>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800" tabindex="3" data-hs-combo-box-output-item="">
-                                <div class="flex justify-between items-center w-full">
-                                  <span data-hs-combo-box-search-text="USA" data-hs-combo-box-value="">USA</span>
-                                  <span class="hidden hs-combo-box-selected:block">
-                                    <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                      <path d="M20 6 9 17l-5-5"></path>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800" tabindex="3" data-hs-combo-box-output-item="">
-                                <div class="flex justify-between items-center w-full">
-                                  <span data-hs-combo-box-search-text="Italy" data-hs-combo-box-value="">Italy</span>
-                                  <span class="hidden hs-combo-box-selected:block">
-                                    <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                      <path d="M20 6 9 17l-5-5"></path>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800" tabindex="3" data-hs-combo-box-output-item="">
-                                <div class="flex justify-between items-center w-full">
-                                  <span data-hs-combo-box-search-text="France" data-hs-combo-box-value="">France</span>
-                                  <span class="hidden hs-combo-box-selected:block">
-                                    <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                      <path d="M20 6 9 17l-5-5"></path>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </div>
                             </div>
-                          </div>
-                        
-                    </div>
-      
-                    
-    
-                    <!-- HORARIO -->
-    
-      
-                    <div class="sm:col-span-3">
-                        <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5">
-                        Horario
-                        </label>
-                    </div>
-      
-                    <div class="sm:col-span-9">
 
-                        <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none">
-                            <option selected="">Seleccione una jornada</option>
-                            <option>Mañana</option>
-                            <option>Tarde</option>
-                            <option>Mixta</option>
-                            <option>Especial</option>
-                        </select>
-                        
+
+                            <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100" tabindex="1" data-hs-combo-box-output-item="">
+                                <div class="flex justify-between items-center w-full">
+                                    <span data-hs-combo-box-search-text="Andresito Yupi" data-hs-combo-box-value="">Andresito Yupi</span>
+                                    <span class="hidden hs-combo-box-selected:block">
+                                        <svg class="flex-shrink-0 size-3.5 text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-1000" tabindex="2" data-hs-combo-box-output-item="">
+                                <div class="flex justify-between items-center w-full">
+                                    <span data-hs-combo-box-search-text="Un Maestro" data-hs-combo-box-value="">Un Maestro</span>
+                                    <span class="hidden hs-combo-box-selected:block">
+                                        <svg class="flex-shrink-0 size-3.5 text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-    
-                </div>
-      
-                <div class="mt-10 flex justify-end gap-x-2">
-                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" (click)="cancelarEditar()">
-                        Cancelar
-                    </button>
-                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
-                        Guardar
-                    </button>
+                    
                 </div>
     
-            </form>
+                
+
+                <!-- HORARIO -->
+
     
-        </div>
+                <div class="sm:col-span-3">
+                    <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5">
+                    Horario
+                    </label>
+                </div>
     
+                <div class="sm:col-span-9">
+
+                    <select data-hs-select='{
+                        "placeholder": "Seleccione una jornada",
+                        "toggleTag": "<button type=\"button\"></button>",
+                        "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-3 px-4 pe-9 flex text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded-lg text-start text-sm focus:border-indigo-500 focus:ring-indigo-500 before:absolute before:inset-0 before:z-[1]",
+                        "dropdownClasses": "mt-2 z-50 w-full max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+                        "optionClasses": "py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+                        "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>",
+                        "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"flex-shrink-0 size-3.5 text-gray-500 dark:text-neutral-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+                      }' class="hidden">
+                        <option value="">Choose</option>
+                        <option>Mañana</option>
+                        <option>Tarde</option>
+                        <option>Mixta</option>
+                        <option>Especial</option>
+                    </select>
+
+                    
+                </div>
+
+            </div>
+    
+            <div class="mt-10 flex justify-end gap-x-2">
+                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" (click)="cancelarEditar()">
+                    Cancelar
+                </button>
+                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+
     </div>
 
-}
+</div>
 
 
 <!-- MODAL FORMULARIO -->
