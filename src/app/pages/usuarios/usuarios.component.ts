@@ -9,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class UsuariosComponent {
 
+  isEditarFormClicked = false;
+
+  editarFormClicked() {
+    this.isEditarFormClicked = !this.isEditarFormClicked;
+    if (this.isEditarFormClicked) {
+      setTimeout(() => {
+        const editarForm = document.getElementById('editar-form');
+        if (editarForm) {
+          editarForm.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  }
+
+  cerrarEditar() { 
+    this.isEditarFormClicked = false;
+  }
+
 }
