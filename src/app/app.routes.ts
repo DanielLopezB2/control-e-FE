@@ -8,6 +8,7 @@ import { AsistenciaComponent } from './pages/asistencia/asistencia.component';
 import { CalificacionesComponent } from './pages/calificaciones/calificaciones.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { IncidenciasComponent } from './pages/incidencias/incidencias.component';
+import { ActividadesComponent } from './pages/actividades/actividades.component';
 
 export const routes: Routes = [
     { path: 'index', pathMatch: 'full', redirectTo: '/index/main' },
@@ -19,6 +20,7 @@ export const routes: Routes = [
             { path: 'grupos', component: GruposComponent },
             { path: 'usuarios', component: UsuariosComponent },
             { path: 'asistencia', component: AsistenciaComponent },
+            { path: 'actividades', component: ActividadesComponent },
             { path: 'calificaciones', component: CalificacionesComponent },
             { path: 'estadisticas', component: EstadisticasComponent },
             { path: 'incidencias', component: IncidenciasComponent },
