@@ -14,14 +14,7 @@
 
         <div class="">
 
-            <button type="button" class="mr-3 py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-700 text-white hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 ease-in-out"
-            data-hs-overlay="#escaner-modal">
-                Escanear examen/tarea
-            </button>
-
-            <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 ease-in-out" data-hs-overlay="#csv-modal">
-                Subir CSV
-            </button>
+            
 
         </div>
 
@@ -45,7 +38,7 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Grupo</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Cantidad estudiantes</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Última Actividad</th>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Actividad</th>
                                 <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase"></th>
                             </tr>
 
@@ -58,7 +51,10 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">45</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Recuperación examen 1</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                <button type="button" class="mr-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:pointer-events-none">Registrar calificaciones</button>
+                                    <button type="button" class="mr-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:pointer-events-none" (click)="registrarCalificacionesIsClicked()">Editar calificaciones</button>
+
+                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-orange-600 hover:text-orange-800 disabled:opacity-50 disabled:pointer-events-none">Cerrar calificaciones</button>
+
                                 </td>
                             </tr>
     
@@ -67,7 +63,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">27</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Tarea sumas y restas</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button" class="mr-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:pointer-events-none">Registrar calificaciones</button>
+                                    <button type="button" class="mr-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:pointer-events-none" (click)="registrarCalificacionesIsClicked()">Editar calificaciones</button>
+
+                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-orange-600 hover:text-orange-800 disabled:opacity-50 disabled:pointer-events-none">Cerrar calificaciones</button>
                                 </td>
                             </tr>
                 
@@ -76,7 +74,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">31</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Actividad cooperativa</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button" class="mr-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:pointer-events-none">Registrar calificaciones</button>
+                                    <button type="button" class="mr-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-indigo-600 hover:text-indigo-800 disabled:opacity-50 disabled:pointer-events-none" (click)="registrarCalificacionesIsClicked()">Editar calificaciones</button>
+
+                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-orange-600 hover:text-orange-800 disabled:opacity-50 disabled:pointer-events-none">Cerrar calificaciones</button>
                                 </td>
                             </tr>
 
@@ -88,6 +88,106 @@
 
             </div>
 
+        </div>
+
+    </div>
+
+</div>
+
+<!-- TABLA ESTUDIANTES -->
+
+<div id="tabla-grupos" [classList]="!isRegistrarCalificacionesClicked ? 'hidden' : 'animate-fade-in-down animate-duration-slow mb-20'">
+
+    <div class="flex justify-start items-center mb-4 mt-20">
+        <span class="text-base w-fit inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full font-bold border bg-indigo-600 text-gray-100">Grupo 11A</span>
+
+        <p class="ml-3 font-medium text-indigo-700"><span class="font-bold">Actividad:</span> Tareas sumas y restas</p>
+    </div>
+
+
+    <div class="-m-1.5 overflow-x-auto">
+
+        <div class="p-1.5 min-w-full inline-block align-middle">
+
+            <div class="border rounded-lg divide-y divide-gray-200">
+
+                <div class="py-3 px-4 flex justify-between items-center">
+
+                    <div class="relative max-w-xs">
+
+                        <label for="hs-table-search" class="sr-only">Search</label>
+                        <input type="text" name="hs-table-search" id="hs-table-search" class="py-2 px-3 ps-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Buscar por estudiante">
+                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
+                            <svg class="size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button type="button" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-indigo-100 text-indigo-800 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none transition ease-in-out">
+                            Descargar reporte
+                        </button>
+
+                        <button type="button" class="ml-3 py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-green-100 text-green-800 hover:bg-green-200 disabled:opacity-50 disabled:pointer-events-none transition ease-in-out" data-hs-overlay="#csv-modal">
+                            Subir CSV
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div #checkboxes class="overflow-hidden">
+
+                    <table class="min-w-full divide-y divide-gray-200">
+
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nombres</th>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Apellidos</th>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Grupo</th>
+                                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Nota</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y divide-gray-200">
+
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">John</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Brown</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">11A</td>
+                                <td class="px-6 py-4 whitespace-nowrap flex justify-end text-sm font-medium">
+                                    <input type="number" class="py-3 px-4 block border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="4.5" min="0">
+                                </td>
+                            </tr>
+                
+                            <tr>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Jim</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Green</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">11A</td>
+                                <td class="px-6 py-4 whitespace-nowrap flex justify-end text-sm font-medium">
+                                    <input type="number" class="py-3 px-4 block border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="4.5" min="0">
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+
+                    </table>
+
+                </div>
+            
+            </div>
+
+            <div class="flex justify-end"> 
+                <button type="button" class="mt-6 py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 ease-in-out">
+                    Guardar calificaciones
+                </button>
+            </div>
+            
         </div>
 
     </div>
@@ -205,7 +305,7 @@
                             <div class="relative" data-hs-combo-box="">
 
                                 <div class="relative">
-                                    <input class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " type="text" value="Argentina" data-hs-combo-box-input="">
+                                    <input class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none " type="text" value="Argentina" data-hs-combo-box-input="">
                                     <div class="absolute top-1/2 end-3 -translate-y-1/2" data-hs-combo-box-toggle="">
                                         <svg class="flex-shrink-0 size-3.5 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="m7 15 5 5 5-5"></path>
@@ -220,7 +320,7 @@
                                         <div class="flex justify-between items-center w-full">
                                             <span data-hs-combo-box-search-text="Argentina" data-hs-combo-box-value="">Argentina</span>
                                             <span class="hidden hs-combo-box-selected:block">
-                                                <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <svg class="flex-shrink-0 size-3.5 text-indigo-600 dark:text-indigo-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 6 9 17l-5-5"></path>
                                                 </svg>
                                             </span>
@@ -231,7 +331,7 @@
                                         <div class="flex justify-between items-center w-full">
                                             <span data-hs-combo-box-search-text="Brazil" data-hs-combo-box-value="">Brazil</span>
                                             <span class="hidden hs-combo-box-selected:block">
-                                                <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <svg class="flex-shrink-0 size-3.5 text-indigo-600 dark:text-indigo-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 6 9 17l-5-5"></path>
                                                 </svg>
                                             </span>
@@ -243,7 +343,7 @@
                                         <div class="flex justify-between items-center w-full">
                                             <span data-hs-combo-box-search-text="China" data-hs-combo-box-value="">China</span>
                                             <span class="hidden hs-combo-box-selected:block">
-                                                <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <svg class="flex-shrink-0 size-3.5 text-indigo-600 dark:text-indigo-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 6 9 17l-5-5"></path>
                                                 </svg>
                                             </span>
@@ -254,7 +354,7 @@
                                         <div class="flex justify-between items-center w-full">
                                             <span data-hs-combo-box-search-text="France" data-hs-combo-box-value="">France</span>
                                             <span class="hidden hs-combo-box-selected:block">
-                                                <svg class="flex-shrink-0 size-3.5 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <svg class="flex-shrink-0 size-3.5 text-indigo-600 dark:text-indigo-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="M20 6 9 17l-5-5"></path>
                                                 </svg>
                                             </span>
@@ -306,7 +406,7 @@
 
             <div class="p-4 overflow-y-auto">
                 <p class="text-gray-800">
-                    Aqui puede anexar un archivo con extension .CSV que contenga los datos de las calificaciones.
+                    Aqui puede anexar un archivo con extension .CSV que contenga los datos de las calificaciones de esta actividad para los estudiantes de este grupo.
                 </p>
             </div>
 
@@ -333,64 +433,6 @@
             <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
 
                 <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#csv-modal">
-                    Cancelar
-                </button>
-                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
-                    Guardar
-                </button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL DE ESCANER DOCUMENTO -->
-
-<div id="escaner-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
-    <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
-        <div class="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
-            <div class="flex justify-between items-center py-3 px-4 border-b">
-                <h3 class="font-bold text-gray-800">
-                    Subir archivo para escanear
-                </h3>
-                <button type="button" class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#escaner-modal">
-                    <span class="sr-only">Close</span>
-                    <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <div class="p-4 overflow-y-auto">
-                <p class="text-gray-800">
-                    Aqui puede anexar un archivo con extension .PDF que contenga los datos del examen.
-                </p>
-            </div>
-
-            <div class="max-w-sm p-4 mt-2">
-                <form>
-                    <label class="block">
-                        <span class="sr-only">Carga archivo para escanear</span>
-                        <input type="file" class="block w-full text-sm text-gray-500
-                        file:me-4 file:py-2 file:px-4
-                        file:rounded-lg file:border-0
-                        file:text-sm file:font-semibold
-                        file:bg-orange-500 file:text-white
-                        hover:file:bg-orange-700
-                        file:disabled:opacity-50 file:disabled:pointer-events-none
-                        file:transition-all
-                        file:duration-300 
-                        file:ease-in-out
-                        "
-                        accept=".pdf">
-                    </label>
-                </form>
-            </div>
-
-            <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-
-                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#escaner-modal">
                     Cancelar
                 </button>
                 <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
