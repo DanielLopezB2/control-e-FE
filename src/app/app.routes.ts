@@ -9,6 +9,7 @@ import { CalificacionesComponent } from './pages/calificaciones/calificaciones.c
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { IncidenciasComponent } from './pages/incidencias/incidencias.component';
 import { ActividadesComponent } from './pages/actividades/actividades.component';
+import { AreasAsignaturasComponent } from './pages/areas-asignaturas/areas-asignaturas.component';
 
 export const routes: Routes = [
     { path: 'index', pathMatch: 'full', redirectTo: '/index/main' },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     {
         path: 'index', component: NavContentComponent, children: [
             { path: 'main', component: MainComponent },
+            { path: 'areas', component: AreasAsignaturasComponent },
             { path: 'estudiantes', component: EstudiantesComponent },
             { path: 'grupos', component: GruposComponent },
             { path: 'usuarios', component: UsuariosComponent },
