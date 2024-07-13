@@ -5,7 +5,7 @@ import { Estado } from '../../enums/estado.enum';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toast } from 'ngx-sonner';
 import { HSOverlay } from 'preline';
-import { NgFor, TitleCasePipe } from '@angular/common';
+import { LowerCasePipe, NgFor, TitleCasePipe } from '@angular/common';
 import { FilterAreaPipe } from '../../pipes/filter-area.pipe';
 import { AsignaturaService } from '../../core/services/asignatura.service';
 import { Asignatura } from '../../models/asignatura.model';
@@ -13,7 +13,7 @@ import { Asignatura } from '../../models/asignatura.model';
 @Component({
   selector: 'app-areas-asignaturas',
   standalone: true,
-  imports: [ReactiveFormsModule, TitleCasePipe, FormsModule, FilterAreaPipe, NgFor],
+  imports: [ReactiveFormsModule, TitleCasePipe, FormsModule, FilterAreaPipe, NgFor, LowerCasePipe],
   templateUrl: './areas-asignaturas.component.html',
   styleUrl: './areas-asignaturas.component.css'
 })
