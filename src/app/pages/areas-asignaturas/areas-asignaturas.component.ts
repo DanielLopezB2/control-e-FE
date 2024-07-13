@@ -4,7 +4,7 @@ import { AreaService } from '../../core/services/area.service';
 import { Estado } from '../../enums/estado.enum';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toast } from 'ngx-sonner';
-import { HSOverlay } from 'preline';
+import { HSOverlay, HSTooltip } from 'preline';
 import { LowerCasePipe, NgFor, TitleCasePipe } from '@angular/common';
 import { FilterAreaPipe } from '../../pipes/filter-area.pipe';
 import { AsignaturaService } from '../../core/services/asignatura.service';
@@ -42,6 +42,18 @@ export class AreasAsignaturasComponent implements OnInit {
       console.error('Elemento no encontrado');
     }
   }
+
+  // ----------------------------------------------------------------------------------------------------
+  // -------------------------------------- SHOW TOOLTIP ------------------------------------------------
+  // ----------------------------------------------------------------------------------------------------
+  showTooltip() {
+    const element = document.getElementById("hs-tooltip");
+    if (element !== null) {
+      HSTooltip.show(element);
+    } else {
+      console.error('Elemento no encontrado');
+    }
+  }
   
 
   // ----------------------------------------------------------------------------------------------------
@@ -74,12 +86,16 @@ export class AreasAsignaturasComponent implements OnInit {
   formGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    estado: new FormControl('', [Validators.required])
+    estado: new FormControl('ACTIVO', [Validators.required])
   });
 
   clickAddArea() { 
     this.areaId = 0;
-    this.formGroup.reset();
+    this.formGroup.reset({
+      nombre: '',
+      descripcion: '',
+      estado: 'ACTIVO'
+    });
     this.isEditing = false;
   }
 
