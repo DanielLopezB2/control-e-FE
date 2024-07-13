@@ -19,6 +19,10 @@ export class EstudianteService {
     return this.http.get<Estudiante>(`${environment.APIUrlBase}/estudiante/${estudianteId}`);
   }
 
+  findAllByGrupoId(grupoId: number): Observable<Estudiante[]> {
+    return this.http.get<Estudiante[]>(`${environment.APIUrlBase}/estudiante/findAll/${grupoId}`);
+  }
+
   createEstudiante(estudiante: Estudiante): Observable<Estudiante> {
     return this.http.post<Estudiante>(`${environment.APIUrlBase}/estudiante`, estudiante);
   }
